@@ -1,0 +1,33 @@
+blog:
+  image: ghost
+  ports:
+    - 2368:2368
+  links:
+    - mail
+    - postgres
+  volumes_from:
+    - blogdata
+  env_file:
+    - environment.list
+
+blogdata:
+  build: ./images/ghost-data
+
+mail:
+  image: schickling/mailcatcher
+  ports:
+    - "1080:1080"
+  expose:
+    - "1025"
+
+postgres:
+  build: ./images/postgres
+  volumes_from:
+    - postgresdata
+  env_file:
+      - environment.list
+  expose:
+      - "5432"
+
+postgresdata:
+  build: ./images/postgres-data
