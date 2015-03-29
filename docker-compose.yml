@@ -5,13 +5,21 @@ blog:
   links:
     - mail
     - postgres
+    - ghostdb
   volumes_from:
     - blogdata
   env_file:
     - environment.list
 
 blogdata:
-  build: ./images/ghost-data
+  build: ./ghost-data/image
+
+ghostdb:
+  build: ./ghost-db/image
+  links:
+    - postgres
+  volumes:
+    - ./ghost-db/volumes/sql:/sql
 
 mail:
   image: schickling/mailcatcher
@@ -21,7 +29,9 @@ mail:
     - "1025"
 
 postgres:
-  build: ./images/postgres
+  image: postgres:9.4
+  links:
+    - postgresdata
   volumes_from:
     - postgresdata
   env_file:
@@ -30,4 +40,4 @@ postgres:
       - "5432"
 
 postgresdata:
-  build: ./images/postgres-data
+  build: ./postgres-data/image
