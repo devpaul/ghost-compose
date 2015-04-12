@@ -4,6 +4,7 @@ FROM centos
 RUN groupadd user && useradd --create-home --home-dir /home/user -g user user
 ENV GHOST_CONTENT /var/lib/ghost
 COPY var/lib/ghost $GHOST_CONTENT
+RUN mkdir -p $GHOST_CONTENT/content/data
 RUN chown -R user:user "$GHOST_CONTENT"
 VOLUME $GHOST_CONTENT
 CMD ["true"]

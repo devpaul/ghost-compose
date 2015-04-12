@@ -17,7 +17,7 @@ var mailgun = {
 	options: {
 		service: 'Mailgun',
 		auth: {
-			user: process.env.MAILGUN_USER, // mailgun username
+			user: process.env.MAILGUN_USER,     // mailgun username
 			pass: process.env.MAILGUN_PASSWORD  // mailgun password
 		}
 	}
@@ -26,7 +26,7 @@ var mailgun = {
 var postgres = {
 	client: 'pg',
 	connection: {
-		host     : 'postgres',
+		host     : process.env.POSTGRES_HOST || 'postgres',
 		user     : process.env.POSTGRES_GHOST_USER,
 		password : process.env.POSTGRES_GHOST_PASSWORD,
 		database : process.env.POSTGRES_GHOST_DB,

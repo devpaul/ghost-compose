@@ -1,0 +1,13 @@
+postgres:
+  image: postgres:9.4
+#  links:
+#    - postgresdata
+#  volumes_from:
+#    - postgresdata
+  env_file:
+      - environment.list
+  expose:
+      - "5432"
+
+postgresdata:
+  build: ../postgres-data/image

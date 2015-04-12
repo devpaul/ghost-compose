@@ -1,0 +1,25 @@
+# The Ghost service
+blog:
+  image: ghost
+  ports:
+    - 2368:2368
+  env_file:
+    - environment.list
+#  links:
+#    - mail       // requires a mail service defined in config.js
+#    - postgres   // requires postgres as defined in config.js
+#    - ghostdb    // postgres needs to be initialized prior to ghost running
+#  volumes_from:
+#    - blogdata   // a data container or external volume should be set up
+
+# Data container for Ghost
+blogdata:
+  build: ../ghost-data/image
+
+# Used for importing sql/initializing database
+# sql is loaded from volume at ./ghost-db/volumes/sql
+# requires a link to postgres
+ghostdb:
+  build: ../ghost-db/image
+  volumes:
+    - ../ghost-db/volumes/sql:/sql

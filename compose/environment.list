@@ -1,5 +1,6 @@
 NODE_ENV=development
 GHOST_URL=http://ghost.dev:2368
+POSTGRES_HOST=postgres
 POSTGRES_PASSWORD=development
 POSTGRES_GHOST_USER=ghostdev
 POSTGRES_GHOST_PASSWORD=development
