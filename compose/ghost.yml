@@ -14,12 +14,12 @@ blog:
 
 # Data container for Ghost
 blogdata:
-  build: ../ghost-data/image
+  build: ../ghost-data
 
 # Used for importing sql/initializing database
 # sql is loaded from volume at ./ghost-db/volumes/sql
 # requires a link to postgres
 ghostdb:
-  build: ../ghost-db/image
+  build: ../ghost-db
   volumes:
     - ../ghost-db/volumes/sql:/sql
