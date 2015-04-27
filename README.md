@@ -4,8 +4,8 @@ containers that host three services. Ghost, Postgres, and MailCatcher run in sep
 containers are provided for Ghost and Postgres.
 
 ## Requirements
-* docker
-* docker-compose
+* docker >= 1.6.0
+* docker-compose >= 1.2.0
 * (mac or win) boot2docker
 
 ## Quick Start
